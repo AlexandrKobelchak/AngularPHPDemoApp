@@ -3,7 +3,7 @@
 class DataController extends BaseController
 {
 
-    public function index()
+    public function index($data)
     {
         header("Content-Type: application/json");
         $jsonData=[];

@@ -3,7 +3,7 @@
 class ErrorController extends BaseController
 {
 
-    public function index()
+    public function index($data)
     {
         // TODO: Implement index() method.
     }

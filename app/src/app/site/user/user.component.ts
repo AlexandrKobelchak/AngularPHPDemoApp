@@ -1,4 +1,5 @@
 import {Component}  from "@angular/core";
+import {UserService} from "../../_services/UserService";
 
 
 @Component({
@@ -8,4 +9,8 @@ import {Component}  from "@angular/core";
 export class UserComponent{
 
     public myname= "Alexandr";
+
+    constructor(private userService:UserService) {
+        
+    }
 }

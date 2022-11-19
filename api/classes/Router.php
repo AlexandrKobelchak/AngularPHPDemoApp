@@ -46,14 +46,7 @@ class Router
 
        // print_r($file);
 
-        if(!is_readable($file))
-        {
-            die("Error 404 Controller not found");
-            //header(404);
-        }
 
-
-        require_once ($file);
 
         //create controller instance
         $className = $controller."Controller";
@@ -109,7 +102,7 @@ class Router
                 break;
             }
         }
-        print_r($controller);
+        //print_r($controller);
 
         if(empty($controller))
         {
@@ -117,8 +110,28 @@ class Router
             $action="index";
             return;
         }
-        $action=array_shift($parts);
 
+        $file=$cmd_path.$controller."Controller.php";
+        if(!is_readable($file))
+        {
+            die("Error 404 Controller not found");
+            //header(404);
+        }
+
+
+        require_once ($file);
+        $controllerInstance = new ($controller."Controller")();
+
+
+        if($controllerInstance instanceof ApiController)
+        {
+            $action="index";
+        }
+        else{
+
+            //print_r("API");
+            $action=array_shift($parts);
+        }
 
 
         if(empty($action))
@@ -126,7 +139,6 @@ class Router
             $action="index";
         }
 
-        $file=$cmd_path.$controller."Controller.php";
 
         $args=$parts;
     }
