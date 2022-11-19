@@ -7,9 +7,9 @@ class UserController extends ApiController
     {
         header("Content-Type: application/json");
         $jsonData=[];
-        foreach (Registry::Get("pdo")->query("SELECT id, firstName, lastName FROM users") as $row)
+        foreach (Registry::Get("pdo")->query("SELECT id, firstName, lastName, birthday FROM users") as $row)
         {
-            array_push($jsonData, array('id'=>$row['id'], 'firstName'=>$row['firstName'], 'lastName'=>$row['lastName']));
+            array_push($jsonData, array('id'=>$row['id'], 'firstName'=>$row['firstName'], 'lastName'=>$row['lastName'], 'birthday'=>$row['birthday']));
         }
         //print_r($jsonData);
         echo json_encode($jsonData, JSON_UNESCAPED_UNICODE);

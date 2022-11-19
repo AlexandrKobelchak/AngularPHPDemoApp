@@ -1,12 +1,15 @@
 AddDefaultCharset UTF-8
 
+#<IfModule mod_headers.c>
+#    SetEnvIf Origin "http(s)?://(www\.)?(spd011.com)$" AccessControlAllowOrigin=$0$1
+#    Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+#    Header set Access-Control-Allow-Credentials true
+#</IfModule>
+
 <IfModule mod_headers.c>
-    SetEnvIf Origin "http(s)?://(www\.)?(spd011.com)$" AccessControlAllowOrigin=$0$1
-    Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+    Header set Access-Control-Allow-Origin "*"
     Header set Access-Control-Allow-Credentials true
 </IfModule>
-
-
 
 RewriteEngine on
 

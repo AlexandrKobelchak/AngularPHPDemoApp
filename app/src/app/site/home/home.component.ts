@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -11,7 +11,7 @@ import {HttpClient} from "@angular/common/http";
   styles: [
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   private allUsers:any[];
 
@@ -20,10 +20,5 @@ export class HomeComponent implements OnInit {
     this.allUsers=[];
   }
 
-  ngOnInit(): void {
-
-    this.http.get("http://mvc.com/Data").subscribe()
-
-  }
 
 }

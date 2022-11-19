@@ -2,15 +2,16 @@ import {IModel} from "../_abstract/IModel";
 
 export class User implements IModel{
 
-    // @ts-ignore
     public id: number;
-
-    // @ts-ignore
     public firstName:string;
-
-    // @ts-ignore
     public lastName:string;
-
-    // @ts-ignore
     public birthday:Date;
+
+    constructor(id: number, firstName: string, lastName: string, birthday: Date) {
+
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+    }
 }
