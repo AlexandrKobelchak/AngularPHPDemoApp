@@ -1,0 +1,17 @@
+AddDefaultCharset UTF-8
+
+<IfModule mod_headers.c>
+    SetEnvIf Origin "http(s)?://(www\.)?(spd011.com)$" AccessControlAllowOrigin=$0$1
+    Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
+
+
+
+RewriteEngine on
+
+RewriteCond %{REQUST_FILENAME} !-f
+RewriteCond %{REQUST_FILENAME} !-d
+
+RewriteRule ^(.*)$ router.php?route=$1 [L,QSA]
+
